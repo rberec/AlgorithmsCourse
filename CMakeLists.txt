@@ -4,6 +4,8 @@ project(algorithmscourse)
 set (Tutorial_VERSION_MAJOR 1)
 set (Tutorial_VERSION_MINOR 0)
 
+add_compile_options(-std=c++11)
+
 add_subdirectory(src)
 include_directories ("${PROJECT_SOURCE_DIR}/src")
 
