@@ -4,11 +4,11 @@ void UnionFind::connect(size_t p, size_t q) {
     doConnect(p, q);
 }
 
-bool UnionFind::connected(size_t p, size_t q) const {
+bool UnionFind::connected(size_t p, size_t q) {
     return doConnected(p, q);
 }
 
-bool QuickFindUF::doConnected(size_t p, size_t q) const {
+bool QuickFindUF::doConnected(size_t p, size_t q) {
     return id_[p] == id_[q];
 }
 
@@ -20,12 +20,12 @@ void QuickFindUF::doConnect(size_t p, size_t q) {
         if (id_[i] == pid) id_[i] = qid;
 }
 
-size_t QuickUnionUF::root(size_t p) const {
+size_t QuickUnionUF::root(size_t p) {
     while (p != id_[p]) p = id_[p];
     return p;
 }
 
-bool QuickUnionUF::doConnected(size_t p, size_t q) const {
+bool QuickUnionUF::doConnected(size_t p, size_t q) {
     return root(p) == root(q);
 }
 
@@ -47,5 +47,13 @@ void WeightedQuickUnionUF::doConnect(size_t p, size_t q) {
         id_[pid] = qid;
         w_[qid] += w_[pid];
     }
+}
+
+size_t PathCompressionWeightedQuickUnionUF::root(size_t p) {
+    while (p != id_[p]) {
+      id_[p] = id_[id_[p]];
+      p = id_[p];
+    }
+    return p;
 }
 

@@ -1,1 +1,3 @@
-add_library(UnionFind UnionFind.cpp)
+add_library(Src UnionFind.cpp
+		Percolation.cpp
+		PercolationStats.cpp)

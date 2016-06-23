@@ -1,16 +1,16 @@
 #pragma once
+#include <stdio.h>
 #include <stdlib.h>
-#include <iostream>
 #include <memory>
 #include <vector>
 
 class UnionFind {
   public:
-    bool connected(size_t p, size_t q) const;
+    bool connected(size_t p, size_t q);
     void connect(size_t p, size_t q);
 
   private:
-    virtual bool doConnected(size_t p, size_t q) const = 0;
+    virtual bool doConnected(size_t p, size_t q) = 0;
     virtual void doConnect(size_t p, size_t q) = 0;
 
   protected:
@@ -27,7 +27,7 @@ class QuickFindUF: public UnionFind {
     QuickFindUF(size_t N):UnionFind(N) { }
 
   private:
-    bool doConnected(size_t p, size_t q) const;
+    bool doConnected(size_t p, size_t q);
     void doConnect(size_t p, size_t q);
 };
 
@@ -36,11 +36,11 @@ class QuickUnionUF: public UnionFind {
     QuickUnionUF(size_t N):UnionFind(N) { }
 
   private:
-    bool doConnected(size_t p, size_t q) const;
+    bool doConnected(size_t p, size_t q);
     void doConnect(size_t p, size_t q);
 
   protected:
-    size_t root(size_t p) const;
+    size_t root(size_t p);
 };
 
 class WeightedQuickUnionUF: public QuickUnionUF {
@@ -58,11 +58,20 @@ private:
     void doConnect(size_t p, size_t q);
 };
 
+class PathCompressionWeightedQuickUnionUF: public WeightedQuickUnionUF {
+  public:
+    PathCompressionWeightedQuickUnionUF(size_t N):WeightedQuickUnionUF(N) { };
+    
+  protected:
+    size_t root(size_t p);
+};
+  
+
 static void testUnionFind(UnionFind* uf) {
 
     uf->connect(0,1);
     uf->connect(1,5);
 
-    std::cout << uf->connected(0,5) << std::endl;
-    std::cout << uf->connected(0,9) << std::endl;
+    std::printf("%d\n", uf->connected(0,5));
+    std::printf("%d\n", uf->connected(0,9));
 }
