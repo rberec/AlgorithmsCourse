@@ -11,7 +11,7 @@ PercolationStats::PercolationStats(size_t N, size_t T)
   
   std::vector<double> fractions(T, 0);
   
-  std::default_random_engine generator;
+  std::default_random_engine generator(42);
   std::uniform_int_distribution<size_t> distribution(0,N-1);
   
   

@@ -28,4 +28,7 @@ add_test(NAME PercolationTest2
 	 
 add_test(NAME PercolationTest3
 	 COMMAND algorithmscourse "Percolation" 300 100)
+	 
+add_test(NAME PercolationTest4
+	 COMMAND algorithmscourse "Percolation" 500 100)
 
