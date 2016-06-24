@@ -1,69 +1,70 @@
 #pragma once
 #include <stdio.h>
+#include <stdint.h>
 #include <stdlib.h>
 #include <memory>
 #include <vector>
 
 class UnionFind {
   public:
-    bool connected(size_t p, size_t q);
-    void connect(size_t p, size_t q);
+    bool connected(uint64_t p, uint64_t q);
+    void connect(uint64_t p, uint64_t q);
 
   private:
-    virtual bool doConnected(size_t p, size_t q) = 0;
-    virtual void doConnect(size_t p, size_t q) = 0;
+    virtual bool doConnected(uint64_t p, uint64_t q) = 0;
+    virtual void doConnect(uint64_t p, uint64_t q) = 0;
 
   protected:
-    UnionFind(size_t N):id_(N) {
-        for (size_t i = 0; i < N; ++i)
+    UnionFind(uint64_t N):id_(N) {
+        for (uint64_t i = 0; i < N; ++i)
             id_[i] = i;
     }
 
-    std::vector<size_t> id_;
+    std::vector<uint64_t> id_;
 };
 
 class QuickFindUF: public UnionFind {
   public:
-    QuickFindUF(size_t N):UnionFind(N) { }
+    QuickFindUF(uint64_t N):UnionFind(N) { }
 
   private:
-    bool doConnected(size_t p, size_t q);
-    void doConnect(size_t p, size_t q);
+    bool doConnected(uint64_t p, uint64_t q);
+    void doConnect(uint64_t p, uint64_t q);
 };
 
 class QuickUnionUF: public UnionFind {
   public:
-    QuickUnionUF(size_t N):UnionFind(N) { }
+    QuickUnionUF(uint64_t N):UnionFind(N) { }
 
   private:
-    bool doConnected(size_t p, size_t q);
-    void doConnect(size_t p, size_t q);
+    bool doConnected(uint64_t p, uint64_t q);
+    void doConnect(uint64_t p, uint64_t q);
 
   protected:
-    size_t root(size_t p);
+    uint64_t root(uint64_t p);
 };
 
 class WeightedQuickUnionUF: public QuickUnionUF {
   public:
-    WeightedQuickUnionUF(size_t N):
+    WeightedQuickUnionUF(uint64_t N):
         QuickUnionUF(N),
         w_(N)
     {
-        for (size_t i = 0; i < N; ++i)
+        for (uint64_t i = 0; i < N; ++i)
             w_[i] = 1;
     }
 
 private:
-    std::vector<size_t> w_;
-    void doConnect(size_t p, size_t q);
+    std::vector<uint64_t> w_;
+    void doConnect(uint64_t p, uint64_t q);
 };
 
 class PathCompressionWeightedQuickUnionUF: public WeightedQuickUnionUF {
   public:
-    PathCompressionWeightedQuickUnionUF(size_t N):WeightedQuickUnionUF(N) { };
+    PathCompressionWeightedQuickUnionUF(uint64_t N):WeightedQuickUnionUF(N) { };
     
   protected:
-    size_t root(size_t p);
+    uint64_t root(uint64_t p);
 };
   
 

@@ -2,7 +2,7 @@
 
 #include "Percolation.hpp"
 
-Percolation::Percolation(size_t N)
+Percolation::Percolation(uint64_t N)
 :N_(N),
  uf_(new PathCompressionWeightedQuickUnionUF(N_*N_ + 2)),
  grid_(N_*N_, false)
@@ -10,13 +10,13 @@ Percolation::Percolation(size_t N)
   
 }
 
-bool Percolation::isOpen(size_t i, size_t j)
+bool Percolation::isOpen(uint64_t i, uint64_t j)
 {
   return grid_[flatten(i,j)];
 }
 
 
-void Percolation::open(size_t i, size_t j) {
+void Percolation::open(uint64_t i, uint64_t j) {
   grid_[flatten(i,j)] = true;
   
   if (i == 0) uf_->connect(0, flatten(i,j)+1);
@@ -42,15 +42,15 @@ bool Percolation::percolates()
   return uf_->connected(0, N_*N_ + 1);
 }
 
-size_t Percolation::flatten(size_t i, size_t j)
+uint64_t Percolation::flatten(uint64_t i, uint64_t j)
 {
   return (i * N_ + j);
 }
 
 void Percolation::display()
 {
-  for (size_t i = 0; i < N_; ++i) {
-   for (size_t j = 0; j < N_; ++j) {
+  for (uint64_t i = 0; i < N_; ++i) {
+   for (uint64_t j = 0; j < N_; ++j) {
      
      if (uf_->connected(0, flatten(i, j) + 1)) 
        std::cout << " ";

@@ -6,21 +6,21 @@
 #include <numeric>
 #include <algorithm>
 
-PercolationStats::PercolationStats(size_t N, size_t T)
+PercolationStats::PercolationStats(uint64_t N, uint64_t T)
 {
   
   std::vector<double> fractions(T, 0);
   
   std::default_random_engine generator(42);
-  std::uniform_int_distribution<size_t> distribution(0,N-1);
+  std::uniform_int_distribution<uint64_t> distribution(0,N-1);
   
   
-  for (size_t t = 0; t < T; ++t) {
+  for (uint64_t t = 0; t < T; ++t) {
     Percolation p(N);
-    size_t n(0);
+    uint64_t n(0);
     while(!p.percolates()) {
-      size_t i;
-      size_t j;
+      uint64_t i;
+      uint64_t j;
       do {
 	i = distribution(generator);
 	j = distribution(generator);

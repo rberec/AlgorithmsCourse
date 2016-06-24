@@ -1,10 +1,12 @@
 #pragma once
+
 #include <stdlib.h>
+#include <stdint.h>
 
 class PercolationStats {
   public:
     // perform T independent experiments on an N-by-N grid
-    PercolationStats(size_t N, size_t T);   
+    PercolationStats(uint64_t N, uint64_t T);   
     
     // sample mean of percolation threshold
     double mean() const {return mean_;};
