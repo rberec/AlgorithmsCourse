@@ -20,6 +20,9 @@ target_link_libraries (UnionFind_test Src)
 add_executable(PercolationStats_test tests/PercolationStats_test.cpp)
 target_link_libraries (PercolationStats_test Src)
 
+add_executable(Stack_test tests/Stack_test.cpp)
+target_link_libraries (Stack_test Src)
+
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD_REQUIRED ON)
 
@@ -40,7 +43,10 @@ add_test(NAME PercolationStats_test_2
 add_test(NAME PercolationStats_test_3
 	 COMMAND PercolationStats_test 300 100)
 	 
-add_test(NAME PercolationStats_test_4
-	 COMMAND PercolationStats_test 500 100)
+#add_test(NAME PercolationStats_test_4
+#	 COMMAND PercolationStats_test 500 100)
+
+add_test(NAME Stack_test_1
+	 COMMAND Stack_test)
 
 
