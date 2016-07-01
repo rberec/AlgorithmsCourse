@@ -8,7 +8,7 @@ class Stack {
   public:
     
     // Create empty stack
-    Stack() {};
+    Stack();
     
     // insert new item to stack
     void insert(const T& item) {};
@@ -19,13 +19,30 @@ class Stack {
     // check if stack is empty
     bool isEmpty() {};
     
-  
-  // Forbid copy and assignment
   private:
     
-    size_t size();
+    struct Node {
+      T item_;
+      Node* next_;
+      
+      Node(const T& item, Node* next):
+	item_(item),
+	next_(next)
+      {};
+    };
     
+    Node* first_ = nullptr;
+    size_t size = 0;
+    
+    // Forbid copy and assignment
     Stack(const Stack&);
     Stack& operator=(const Stack&);
   
 };
+
+template<typename T>
+Stack::Stack():
+first_(nullptr)
+{
+  
+}
