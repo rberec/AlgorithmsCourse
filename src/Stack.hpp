@@ -20,7 +20,10 @@ class Stack {
     T pop();
     
     // check if stack is empty
-    bool isEmpty() { return first_ == nullptr;};
+    bool isEmpty() { return first_ == nullptr; };
+    
+    // size of stack
+    size_t size() { return size_; }
     
   private:
     

@@ -1,4 +1,6 @@
 #include <string>
+#include <sstream>
+
 
 #include <Stack.hpp>
 
@@ -12,18 +14,19 @@ int main(int argc, char *argv[])
     s.insert("not");
     s.insert("to");
     
-    s.pop();
+    std::printf("%s ", s.pop().c_str());
     
     s.insert("be");
     
-    s.pop();
-    s.pop();
+    std::printf("%s ", s.pop().c_str());
+    std::printf("%s ", s.pop().c_str());
     
     s.insert("that");
     
-    s.pop();
-    s.pop();
-    s.pop();
+    std::printf("%s ", s.pop().c_str());
+    std::printf("%s ", s.pop().c_str());
+    std::printf("%s ", s.pop().c_str());
+
     
     s.insert("is");
     
