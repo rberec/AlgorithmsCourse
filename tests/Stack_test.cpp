@@ -1,5 +1,6 @@
 #include <string>
 #include <sstream>
+#include <stdio.h>
 
 
 #include <Stack.hpp>
@@ -14,18 +15,18 @@ int main(int argc, char *argv[])
     s.insert("not");
     s.insert("to");
     
-    std::printf("%s ", s.pop().c_str());
+    printf("%s ", s.pop().c_str());
     
     s.insert("be");
     
-    std::printf("%s ", s.pop().c_str());
-    std::printf("%s ", s.pop().c_str());
+    printf("%s ", s.pop().c_str());
+    printf("%s ", s.pop().c_str());
     
     s.insert("that");
     
-    std::printf("%s ", s.pop().c_str());
-    std::printf("%s ", s.pop().c_str());
-    std::printf("%s ", s.pop().c_str());
+    printf("%s ", s.pop().c_str());
+    printf("%s ", s.pop().c_str());
+    printf("%s ", s.pop().c_str());
 
     
     s.insert("is");

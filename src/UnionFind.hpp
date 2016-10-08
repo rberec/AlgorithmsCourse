@@ -73,6 +73,6 @@ static void testUnionFind(UnionFind* uf) {
     uf->connect(0,1);
     uf->connect(1,5);
 
-    std::printf("%d\n", uf->connected(0,5));
-    std::printf("%d\n", uf->connected(0,9));
+    printf("%d\n", uf->connected(0,5));
+    printf("%d\n", uf->connected(0,9));
 }
